@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>Playing with Snakes | Conditionals </title>
+	<link rel='stylesheet' href='style.css' type='text/css' media='screen' />
+    <!--[if IE]>
+    <style type='text/css'>
+    #content {
+         padding-top:3em;
+    }
+    </style>
+    <![endif]-->
+</head>
+<body>
+	<div id='topbar'>
+		<div class='yellowButton'><a href='../playingwithsnakes.html'>Playing with Snakes</a></div>
+		<div class='yellowButton' id='menu'><p style='margin-top:0px;margin-bottom:0px'>Conditionals </p><ol start='0'><li><a href='0.html' class='droplink'>Introduction </a></li><li><a href='1.html' class='droplink'>Basics </a></li><li><a href='2.html' class='droplink'>Variables </a></li><li><a href='3.html' class='droplink'>Basic Operations </a></li><li><span style='font-weight:bold'><a class='droplink' href='4.html'>Conditionals </a></span></li><li><a href='5.html' class='droplink'>Loops </a></li><li><a href='6.html' class='droplink'>Random Numbers </a></li><li><a href='7.html' class='droplink'>Handling Errors </a></li><li><a href='8.html' class='droplink'>Storing Lots of Data: Dictionaries </a></li><li><a href='9.html' class='droplink'>Storing Lots of Data: Lists </a></li><li><a href='10.html' class='droplink'>Being Lazy with Functions </a></li><li><a href='11.html' class='droplink'>Recursion: Calling yourself </a></li><li><a href='12.html' class='droplink'>Files: Long Term Storage </a></li></ol></div><div class='yellowButtonRight'><a href='5.html'>&gt;</a></div><div class='yellowButtonRight'><a href='4.html#top'>&and;</a></div><div class='yellowButtonRight'><a href='3.html'>&lt;</a></div></div>
+
+	<div id='content'>
+	<a name='top'></a><h1>Chapter 4: Conditionals </h1><blockquote>If you keep making that face, it will get stuck like that. -My mother
+<br>
+</blockquote><p>Python has a number of comparison operators that you can use to check if a particular statement is True or False. The absolute hardest one to remember is the equals operator, which is written <span class="codelike">==</span>.</p>
+<p>Remember last chapter, when I said you'd get that confused with the assignment operator, <span class="codelike">=</span>. Yeah. Stop that.</p>
+<p>Use <span class="codelike">==</span> to test if two things have the same value. For example:</p>
+<div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>You might be tempted to write something like:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> 5 <span style="color: #ff7700;font-weight:bold;">is</span> 6</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> 6 <span style="color: #ff7700;font-weight:bold;">is</span> 6</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> 7 <span style="color: #ff7700;font-weight:bold;">is</span> <span style="color: #ff7700;font-weight:bold;">not</span> <span style="color: #ff4500;">4</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Which will probably display:</p>
+<pre>False
+True
+True
+</pre><p>While this seems like a good idea, in some cases it won't work. The <span class="codelike">is</span> operator acutally compares objects and not values. Don't worry. You'll understand this later.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> 5==4</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;dog&quot;</span>==<span style="color: #483d8b;">&quot;cat&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #ff4500;">3</span>==<span style="color: #ff4500;">3</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>will print out</p>
+<pre>False
+False
+True
+</pre><p>You can also use the less than (<span class="codelike">&lt;</span>) and greater than (<span class="codelike">&gt;</span>) signs to compare either numbers or letters.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> 5<span style="color: #66cc66;">&gt;</span>4</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;dog&quot;</span><span style="color: #66cc66;">&gt;</span><span style="color: #483d8b;">&quot;cat&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #ff4500;">3</span><span style="color: #66cc66;">&lt;</span><span style="color: #ff4500;">3</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>True
+True
+False
+</pre><p>That <span class="codelike">5&gt;4</span> is <span class="codelike">True</span> should be pretty obvious, as well as <span class="codelike">3&lt;3</span> being False. But why is <span class="codelike">"dog"&gt;"cat"</span>, other than the obvious fact that dogs are better than cats? Because of the order of the letters. Because <span class="codelike">d</span> comes after <span class="codelike">c</span>, <span class="codelike">d</span> is greater than <span class="codelike">c</span>. <span class="codelike">d&gt;c&gt;b&gt;a</span>.</p>
+<p>You can use <span class="codelike">&gt;=</span> and <span class="codelike">&gt;=</span> to greater than or equal to and less than or equal to.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> 5<span style="color: #66cc66;">&gt;</span>4</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;dog&quot;</span><span style="color: #66cc66;">&gt;</span>=<span style="color: #483d8b;">&quot;cat&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #ff4500;">3</span><span style="color: #66cc66;">&lt;</span>=<span style="color: #ff4500;">3</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>True
+True
+True
+</pre><div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>While it's possible to use <span class="codelike">&lt;&gt;</span> as the not equals operator, this is generally frowned upon.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><p>The last comparison operator that we'll worry about is the not equals operator, <span class="codelike">!=</span>. It returns true if two things are not the same.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> 5<span style="color: #66cc66;">!</span>=4</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;dog&quot;</span><span style="color: #66cc66;">!</span>=<span style="color: #483d8b;">&quot;cat&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #ff4500;">3</span><span style="color: #66cc66;">!</span>=<span style="color: #ff4500;">3</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>True
+True
+False
+</pre><h2>Conditionals
+</h2>
+<p>You're very familair with conditionals. You probably get them from your parents all the time. I get them from my wife. For example:</p>
+<img src='book/ills/conditionals/wifeconditions.png' title="She actually spends more time walking like a dinosaur than I do" alt='picture'>
+<p>We could rewrite some of these conditons as Python code. For example:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">if</span> attire==<span style="color: #483d8b;">&quot;socks with sandals&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; wife_location = <span style="color: #483d8b;">&quot;not near Mr. Schmidt&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Notice the use of the <span class="codelike">==</span>. We're checking to see if my attire is "socks with sandals" and if it is, we're setting my wife's location to anywhere else, with the assignment operator, <span class="codelike">=</span>.</p>
+<p>We've also introduced another symbol here: the colon (<span class="codelike">:</span>). You can use the <span class="codelike">:</span> to tell Python that all the indented code that follows belongs together, and should be treated separately.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">shoe_color = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;What color shoes are you wearing? &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">if</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;black&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;Excellent choice!&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>In the above example, we're asking the user for the color of their shoes, and if the color is black, we print "Excellent Choice!"</p>
+<img src='book/ills/conditionals/shoes.png' title=" She owns shoes that are all those colors, and no one says she's a clown!" alt='picture'>
+<p>We can also write group if statements together, in the event we have multiple conditions. To do this, use an elif, which stands for "Else If"</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">shoe_color = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;What color shoes are you wearing? &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">if</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;black&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;Excellent choice!&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">elif</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;red&quot;</span>:</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;You're a clown&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">elif</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;orange&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;You're a clown&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">elif</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;purple&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;You're a clown&quot;</span>&nbsp; </div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>But doesn't this seem wasteful? That's got to be a way to combine them. There is. Just use the words <span class="codelike">and</span> and <span class="codelike">or</span></p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">shoe_color = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;What color shoes are you wearing? &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">if</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;black&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;Excellent choice!&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">elif</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;red&quot;</span> <span style="color: #ff7700;font-weight:bold;">or</span> shoe_color == <span style="color: #483d8b;">&quot;orange&quot;</span> <span style="color: #ff7700;font-weight:bold;">or</span> shoe_color == <span style="color: #483d8b;">&quot;purple&quot;</span>:</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;You're a clown&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Notice what we didn't do. We didn't say</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">elif</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;red&quot;</span> <span style="color: #ff7700;font-weight:bold;">or</span> <span style="color: #483d8b;">&quot;orange&quot;</span> <span style="color: #ff7700;font-weight:bold;">or</span> <span style="color: #483d8b;">&quot;purple&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;You're a clown&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>You or I would understand what that means right away. But Python isn't that smart. It will evaluate each thing between an <span class="codelike">and</span> or <span class="codelike">or</span> separately. It will first check to see if <span class="codelike">shoe_color == "red"</span>, then it will check to see if <span class="codelike">orange</span>, which doesn't make a lot of sense.</p>
+<img src='book/ills/conditionals/elseshoes.png' title=" Turquoise was a popular shoe color, back in my day. It'll come back." alt='picture'>
+<p>In addition to <span class="codelike">if</span> and <span class="codelike">elif</span> there's <span class="codelike">else</span>, which handles any other condition. <span class="codelike">else</span> has no condition, because it is <span class="codelike">True</span> for all conditions.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">shoe_color = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;What color shoes are you wearing? &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">if</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;black&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;Excellent choice!&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">elif</span> &nbsp;shoe_color == <span style="color: #483d8b;">&quot;red&quot;</span> <span style="color: #ff7700;font-weight:bold;">or</span> shoe_color == <span style="color: #483d8b;">&quot;orange&quot;</span> <span style="color: #ff7700;font-weight:bold;">or</span> shoe_color == <span style="color: #483d8b;">&quot;purple&quot;</span>:</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;You're a clown&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">else</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;Throw them out!&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>We'll ask the user for a shoe color. If their shoe color is black, we'll print "Excellent Choice!", otherwise if their shoe color is red, orange or purple, we'll print "You're a clown", if their shoe color is anything else in the world, we'll print "Throw them out!", which is probably sound advice. Here's a sample run of that program, with user input in bold:</p>
+<pre>What color shoes are you wearing? <span class="bold">fuchsia</span>
+Throw them out!
+</pre><p>Python will work through each line of our if-else chain, and stops when it finds a line that is true.</p>
+<img src='book/ills/conditionals/flow.png' title=" This is hopefully the most boring illustration in the entire book" alt='picture'>
+<p>What we did in the illustration here is actually the most important troubleshooting ability you can possibly learn when programming. You need to learn to pretend to be a computer. Do <i>exactly</i> what's written in your program, and keep track of what the value of each variable is. It might help to print a program out on paper and write on top of it.</p>
+
+        <p>This website will be taken offline before the end of 2011</p>
+		</div>
+				<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12720395-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

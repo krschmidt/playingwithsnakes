@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /library/
+Disallow: /jquery/
+Disallow: /programPlayer/
+Disallow: /shared/
+Disallow: /students/
+Disallow: /teachers/
+Disallow: /tmp/
+Disallow: /images/
+Disallow: /admin/

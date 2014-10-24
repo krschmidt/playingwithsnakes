@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>Playing with Snakes | Loops </title>
+	<link rel='stylesheet' href='style.css' type='text/css' media='screen' />
+    <!--[if IE]>
+    <style type='text/css'>
+    #content {
+         padding-top:3em;
+    }
+    </style>
+    <![endif]-->
+</head>
+<body>
+	<div id='topbar'>
+		<div class='yellowButton'><a href='../playingwithsnakes.html'>Playing with Snakes</a></div>
+		<div class='yellowButton' id='menu'><p style='margin-top:0px;margin-bottom:0px'>Loops </p><ol start='0'><li><a href='0.html' class='droplink'>Introduction </a></li><li><a href='1.html' class='droplink'>Basics </a></li><li><a href='2.html' class='droplink'>Variables </a></li><li><a href='3.html' class='droplink'>Basic Operations </a></li><li><a href='4.html' class='droplink'>Conditionals </a></li><li><span style='font-weight:bold'><a class='droplink' href='5.html'>Loops </a></span></li><li><a href='6.html' class='droplink'>Random Numbers </a></li><li><a href='7.html' class='droplink'>Handling Errors </a></li><li><a href='8.html' class='droplink'>Storing Lots of Data: Dictionaries </a></li><li><a href='9.html' class='droplink'>Storing Lots of Data: Lists </a></li><li><a href='10.html' class='droplink'>Being Lazy with Functions </a></li><li><a href='11.html' class='droplink'>Recursion: Calling yourself </a></li><li><a href='12.html' class='droplink'>Files: Long Term Storage </a></li></ol></div><div class='yellowButtonRight'><a href='6.html'>&gt;</a></div><div class='yellowButtonRight'><a href='5.html#top'>&and;</a></div><div class='yellowButtonRight'><a href='4.html'>&lt;</a></div></div>
+
+	<div id='content'>
+	<a name='top'></a><h1>Chapter 5: Loops </h1><blockquote>"Programming today is a race between software engineers striving to build bigger and better idiot-proof programs, and the Universe trying to produce bigger and better idiots. So far, the Universe is winning."
+<br>
+-Rich Cook
+<br>
+</blockquote><p>Sometimes your program needs to do the same thing more than once. For example, let's say we want to ask our user for a number between 1 and 10.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">number = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;Give me a number between 1 and 10 &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>But the user might be a jerk, and enter 20 instead. There's nothing stopping them, after all. One idea is to use an <span class="codelike">if</span> statement, and make sure their number meets our requirements:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">number = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;Give me a number between 1 and 10 &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">if</span> number <span style="color: #66cc66;">&lt;</span> 1 <span style="color: #ff7700;font-weight:bold;">or</span> number <span style="color: #66cc66;">&gt;</span> 10:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; number = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;Nice try, but give me a number between 1 and 10 &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Great! Except the user is a real jerk. The kind of jerk who will enter a wrong number twice. Now what happens? At the end of the program we STILL have a number that isn't between 1 and 10. We could keep adding if statements, but let's face it, that's going to get old in a hurry. There must be a better way. Enter loops.</p>
+<h2>While
+</h2>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">number = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;Give me a number between 1 and 10 &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">while</span> number <span style="color: #66cc66;">&lt;</span> 1 <span style="color: #ff7700;font-weight:bold;">or</span> number <span style="color: #66cc66;">&gt;</span> 10:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; number = <span style="color: #008000;">raw_input</span><span style="color: black;">&#40;</span><span style="color: #483d8b;">&quot;Nice try, but give me a number between 1 and 10 &quot;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>A <span class="codelike">while</span> loop checks a condition at the start of the loop. If that condition is true, it does all the code inside. When the code inside is done, it checks the condition again. If the condition is still <span class="codelike">True</span>, it will do the code inside all over again. If will keep doing the loop until the condition is <span class="codelike">True</span> <i>at the start of the loop</i>.</p>
+<p>That's an important distinction. This loop will run forever:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">a=3</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">while</span> a <span style="color: #66cc66;">!</span>= <span style="color: #ff4500;">4</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; a=<span style="color: #ff4500;">4</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; a=<span style="color: #ff4500;">3</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>After checking the condition, this loop immediately sets the value of <span class="codelike">a</span> to <span class="codelike">4</span>, but then it changes it back to <span class="codelike">3</span>! Even though <span class="codelike">a</span> gets the value <span class="codelike">4</span>, it never has it at the start of the loop, so the loop never ends.</p>
+<p>A never ending loop will usually seem like it freezes IDLE. In a terminal window (or command prompt, if you're a Microsoft Windows user), you can press ctrl-c, and it will stop the program. In IDLE, you'll probably need to try to close the window and reopen your program.</p>
+<p>While loops are fantastic for when you don't know ahead of time how many times a loop is going to happen. We don't know how many times the user is going to give us a number that doesn't meet our conditions. But what if we did know how many times we wanted something to happen?</p>
+<div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>Writing <span class="codelike">i=i+10</span> is exactly the same as writing <span class="codelike">i+=10</span>. You can also use <span class="codelike">-=</span>, <span class="codelike">*=</span>, and <span class="codelike">/=</span>.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><h2>For and range()
+</h2>
+<p>Let's write a simple program to print the numbers from 1 to 10:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">i = 0</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">while</span> i<span style="color: #66cc66;">&lt;</span>11:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; i+=<span style="color: #ff4500;">1</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Tada! Notice that we're using <span class="codelike">11</span> in our condition: while <span class="codelike">i</span> is less than <span class="codelike">11</span>, we print <span class="codelike">i</span> and add <span class="codelike">1</span> on to <span class="codelike">i</span>, until <span class="codelike">i</span> reaches <span class="codelike">11</span>, when we stop. But we know ahead of time that we're going to need to print 10 numbers. We can simplify this by using a for loop.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">&#40;</span>1,11<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>The <span class="codelike">range()</span> function is a memory hog, since it generates all the numbers between the start and finish right away. If your program keeps running out of memory, one option is to use the <span class="codelike">xrange()</span> function, which generates them on demand.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><p>The for loop operates by iterating (going through) a list of things. In this case, we can go through a list of things by using the <span class="codelike">range()</span> function, which makes us a list starting at <span class="codelike">1</span> and going until (but not including) <span class="codelike">11</span>. So what Python actually sees is:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: black;">&#91;</span>1,2,3,4,5,6,7,8,9,10<span style="color: black;">&#93;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Python loops through the list and gives <span class="codelike">i</span> the values 1 through 10. In fact, the most recent two examples are, for all practical purposes, the exact same program. One's just easier.</p>
+<p>We can do other neat tricks with <span class="codelike">range()</span>. Understand that <span class="codelike">range()</span> takes in three <i>arguments</i>, and uses those to generate a list. The first argument is the starting number, the second is the stopping number, and the third is the step. We can use the third to generate a list of the even numbers:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">&#40;</span>2,11,2<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>2 4 6 8 10
+</pre><p>Or to generate a list backwards:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">&#40;</span>10,0,-1<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>10 9 8 7 6 5 4 3 2 1
+</pre><p>Alternatively, we can use the <span class="codelike">for</span> loop to loop through things that aren't numbers, like Strings. Let's look at that picture of the bracelet I made for Guido again:</p>
+<img src='book/ills/loops/heartguido.png' title=" My wife was a little jealous of this" alt='picture'>
+<p>A string is just a collection of letters all tied together. A <span class="codelike">for</span> loop can loop through each of those letters.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #483d8b;">&quot;I&lt;3GUIDO&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>I &lt; 3 G U I D O
+</pre><p>Sure, it's not a very exciting program, but we could combine it with an <span class="codelike">if</span> statement and remove all of the vowels:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #483d8b;">&quot;I&lt;3GUIDO&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">if</span> i <span style="color: #ff7700;font-weight:bold;">not</span> <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #483d8b;">&quot;AEIOU&quot;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>&lt; 3 G D
+</pre><p>Notice how we're using the <span class="codelike">not</span> and <span class="codelike">in</span> keywords? They're like magic with lists and Strings. We're checking to see if <span class="codelike">i</span> is not in the string <span class="codelike">"AEIOU"</span>, which happens to be a list of the vowels.</p>
+
+        <p>This website will be taken offline before the end of 2011</p>
+		</div>
+				<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12720395-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

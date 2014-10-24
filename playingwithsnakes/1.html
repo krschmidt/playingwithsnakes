@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>Playing with Snakes | Basics </title>
+	<link rel='stylesheet' href='style.css' type='text/css' media='screen' />
+    <!--[if IE]>
+    <style type='text/css'>
+    #content {
+         padding-top:3em;
+    }
+    </style>
+    <![endif]-->
+</head>
+<body>
+	<div id='topbar'>
+		<div class='yellowButton'><a href='../playingwithsnakes.html'>Playing with Snakes</a></div>
+		<div class='yellowButton' id='menu'><p style='margin-top:0px;margin-bottom:0px'>Basics </p><ol start='0'><li><a href='0.html' class='droplink'>Introduction </a></li><li><span style='font-weight:bold'><a class='droplink' href='1.html'>Basics </a></span></li><li><a href='2.html' class='droplink'>Variables </a></li><li><a href='3.html' class='droplink'>Basic Operations </a></li><li><a href='4.html' class='droplink'>Conditionals </a></li><li><a href='5.html' class='droplink'>Loops </a></li><li><a href='6.html' class='droplink'>Random Numbers </a></li><li><a href='7.html' class='droplink'>Handling Errors </a></li><li><a href='8.html' class='droplink'>Storing Lots of Data: Dictionaries </a></li><li><a href='9.html' class='droplink'>Storing Lots of Data: Lists </a></li><li><a href='10.html' class='droplink'>Being Lazy with Functions </a></li><li><a href='11.html' class='droplink'>Recursion: Calling yourself </a></li><li><a href='12.html' class='droplink'>Files: Long Term Storage </a></li></ol></div><div class='yellowButtonRight'><a href='2.html'>&gt;</a></div><div class='yellowButtonRight'><a href='1.html#top'>&and;</a></div><div class='yellowButtonRight'><a href='0.html'>&lt;</a></div></div>
+
+	<div id='content'>
+	<a name='top'></a><h1>Chapter 1: Basics </h1><blockquote>Computers never do what you want them to, only what you tell them. -Anon
+<br>
+</blockquote><p>Ever notice that computers are impossible, picky things?</p>
+<div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>Don't be alarmed if you get frustrated with people when they don't use precise language. That means you're becoming a better programmer! Just don't get angry with your friends.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><p>They're not. You're just not being very clear.</p>
+<p>Let's look at an example situation from my life, which might have even happened to you.</p>
+<img src='book/ills/basics/anniversary1.png' title="True Story" alt='picture'>
+<p>Now, you and I both know what this secretly means. But a computer? That computer will have no idea what to do. The computer will probably buy something completely practical and maybe even totally random, like a new washing machine or a llama. If you or I purchased anniversary gifts like the computer did, we'd probably never celebrate another anniversary.</p>
+<p>A computer actually needs something like this:</p>
+<img src='book/ills/basics/anniversary2.png' title="This has never happened to me" alt='picture'>
+<p>Perfect! Just head to the bookstore, give them the ISBN and you're good to go. That ISBN tells you <i>exactly</i> which book to buy. Nothing is ambiguous.</p>
+<p>Programming languages are designed to help you describe a solution to a problem without any ambiguities. A program is nothing more than a list of instructions that a computer is going to follow in order. Programming is really a two step process. First you need to come up with an approach to a problem, called an algorithm, and second you need to translate your algorithm into the programming language so that the computer can do the work. All the while you need to remember that the computer will do <i>exactly</i> what you tell it, which seems really simple right now, but you'll forget later.</p>
+<p>There are a bunch of different programming languages you can use. Some are awful. Some are fantastic. Here's two examples.</p>
+<p>Java:</p>
+<div class="java" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> hello<span style="color: #009900;">&#123;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> main<span style="color: #009900;">&#40;</span><a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Astring+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">String</span></a> args<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Asystem+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">System</span></a>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;This is Java&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Erlang:</p>
+<div class="erlang" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #014ea4;">-</span><span style="color: #5400b3;">mod</span><span style="color: #109ab8;">&#40;</span>hello<span style="color: #109ab8;">&#41;</span><span style="color: #6bb810;">.</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #014ea4;">-</span><span style="color: #5400b3;">export</span><span style="color: #109ab8;">&#40;</span><span style="color: #109ab8;">&#91;</span>start<span style="color: #014ea4;">/</span>0<span style="color: #109ab8;">&#93;</span><span style="color: #109ab8;">&#41;</span><span style="color: #6bb810;">.</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff3c00;">start</span><span style="color: #109ab8;">&#40;</span><span style="color: #109ab8;">&#41;</span> <span style="color: #6bb810;">-&gt;</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <a href="http://erlang.org/doc/man/io.html"><span style="color: #ff4e18;">io</span></a>:<span style="color: #ff3c00;">format</span><span style="color: #109ab8;">&#40;</span><span style="color: #ff7800;">&quot;This is Erlang!&quot;</span><span style="color: #109ab8;">&#41;</span><span style="color: #6bb810;">.</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Both Java and Erlang are programming languages. Java gets used all over the world in all sorts of different places. If you keep programming, you'll probably eventually pick up the basics of Java. Erlang is used in a few specialized spots, where a computer needs to think about multiple things at the same time. But both of those languages seem needlessly complex to me. I thought maybe we'd start with something simpler.</p>
+<p>Python:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;This is Python!&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><h2>Where to Program
+</h2>
+<p>Before we can actually write our first program, we need to find a place to get our programming done. You've got an overwhelming set of options, so let's take a moment and pick one.</p>
+<div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>You can also run a program by simply double clicking it. It might just close automatically when it's done. To stop that, add <span class="codelike">raw_input()</span> to the bottom of your program. The only catch is that if your program still seems to automatically close, it's probably because you have an error. Try running it again in IDLE.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><p>One option is to type Python in a word development program, such as Microsoft Word. This is a really bad idea, and we should forget that I even brought it up. Word processing programs are designed to process text and put in all sorts of nasty characters like &ldquo; &rdquo;. We don't want those. We want straight quotes, like &quot;. Plus, most Word Processing programs insert extra things that you can't see, which are great for doing word processing, but terrible for the type of simple text editing you want for programming.</p>
+<p>Another option is to use a text editor such as Notepad on Windows, or gedit on Linux. Text editors are great, because they edit simple text. Simple is good. But the problem is that in order to run the program, you have to save it and find a command prompt and navigate to the right folder, and then... I've already lost you, haven't I?</p>
+<p>Text editors are great after you've been programming for a while. But right now we just want something simple. Something easy. Python comes with something called an Integrated Development Environment (Programmers are lazy, so we just call it an IDE). The IDE that comes with Python is called IDLE. You'd think that because I wrote IDLE in all capital letters that its an acronym. But you're wrong. After searching the internet for hours, the best answer I could come up with is that IDLE is named after <a href="http://en.wikipedia.org/wiki/Eric_Idle">Eric Idle</a>, a Monty Python member. Anyway, the best part about IDLE is that it's probably already installed. Plus, when you want to run a program all you need to do is press F5. Tada! Your program runs. Look for it in your Start Menu.</p>
+<p>While IDLE is a great tool for learning to program, it's not a very good tool for doing large projects. There are literally a hundred different options for you. Two things to keep your eye open for: Integrated debuggers and auto-complete tools. Integrated debuggers help you track down problems buried deep in your code. Auto-complete tools attempt to figure out what you're typing and make suggestions. Le&lt;enter&gt; Typ&lt;enter&gt; nee&lt;enter&gt; to hap&lt;enter&gt;. Check out the <a href="http://wiki.python.org/moin/IntegratedDevelopmentEnvironments">Python Wiki</a>.</p>
+<p>Finally, no discussion of programming environments would be complete without talking about <a href="http://www.vim.org/">Vim</a> and <a href="http://www.gnu.org/software/emacs/">Emacs</a>. Both of these are more than IDEs, they're ways of life. They have more built-in tools than I have pages to talk about them. Both programs have very, very steep learning curves, but offer dramatic improvements to how quickly you can program.</p>
+<h2>Your First Program
+</h2>
+<p>Let's make a really, really simple program. Probably the same first program any programmer you've ever met wrote.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">'Hello, World!'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Simple, right? That's a complete Python program. Simply open a new file in IDLE, type it in, save it, and press F5. It'll run and print a little message to you from your computer. And it's exact: the <span class="codelike">print</span> statement is given the sentence "Hello, World!" and it puts it on the screen for you.</p>
+<p>It's important that you save the file correctly. Python files should be saved with the .py extension, unless they're graphical, in which case you can save them with the .pyw extension. This way the operating system knows what they are.</p>
+<p>Let's look at another one.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">&#40;</span>0,10<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i<span style="color: #66cc66;">*</span><span style="color: #ff4500;">2</span>,</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Easy! That'll print out:</p>
+<pre>0 2 4 6 8 10 12 14 16 18
+</pre><p>Actually, think about that one. You could almost read that like English. For i in the range 0 to 10, print i*2. That just says to take each of the values from 0 to 10, multiply each one by two, and print out each result. Python does a pretty good job of being the type of language you can almost read like English. Give it some time, and you'll find yourself talking like you speak Python.</p>
+<img src='book/ills/basics/zombierepellant.png' title="People won't look at you much funnier than they already do" alt='picture'>
+<h2>Escape Characters
+</h2>
+<p>There's some other trickiness with the print statement. Let's say I want to print a story with some dialog:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;And then she said, &quot;</span>Why yes, I would like a banana<span style="color: #66cc66;">!</span><span style="color: #483d8b;">&quot;&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>See the problem? Python will actually see two strings there. There's the string <span class="codelike">"And then she said, "</span> and there's the string <span class="codelike">""</span>, what she actually said isn't quoted, so python doesn't know that we actually wanted to print that too. Instead, you can use single quotes:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">'And then she said, &quot;Why yes, I would like a banana!&quot;'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Of course, what happens if our character used a contraction, like this:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">'And then she said, &quot;Don'</span>t you want a banana<span style="color: #66cc66;">?</span><span style="color: #483d8b;">&quot;'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Now python sees only one string: <span class="codelike">'And then she said, "Don'</span>. The rest of that line will simply throw an error. To solve this problem, you need to <i>escape</i> the single quote in the word don't. Use a backslash.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">'And then she said, &quot;Don<span style="color: #000099; font-weight: bold;">\'</span>t you want a banana?&quot;'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Python will spot the backslash before the single quote and understand that it should print the quote instead of ending the string. "But wait," you say, "How do I make it print a slash?" Simple! Just add another backslash, like "\\". Escape characters also give you access to a few other things:</p>
+<table><tr><th>Character</th><th>Effect
+</th></tr>
+<tr><td>\\</td><td>backslash
+</td></tr>
+<tr><td>\t</td><td>horizontal tab
+</td></tr>
+<tr><td>\n</td><td>new line
+</td></tr>
+<tr><td>\b</td><td>bell
+</td></tr>
+<tr><td>\'</td><td>single quote
+</td></tr>
+<tr><td>\"</td><td>doublequote
+</td></tr>
+</table><p>You can find a better list on the <a href="http://docs.python.org/reference/lexical_analysis.html#string-literals">Python Website</a>, but the ones above should get you pretty far.</p>
+<h2>Comments
+</h2>
+<p>This one time, whilst working on a program, a velociraptor jumped through my window. Startled, I immediately ran and shut myself in a kitchen, and hoped that raptors couldn't open doors. When the raptor left, I was stuck trying to remember where I'd been in my program.</p>
+<p>If only I'd used a comment. Comments are ways to leave notes to yourself (and others). Any line that starts with a <span class="codelike">#</span> becomes a comment. You can even put comments at the end of a line, after some Python code.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;This is a very important program &quot;</span> <span style="color: #808080; font-style: italic;">#I was working here</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #808080; font-style: italic;">#TODO: install a stronger window</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Comments are also useful when you're trying to fix a problem with your program. By putting a <span class="codelike">#</span> at the beginning of a line you tell Python not to run it. This way you can take out a line and see if that's why your program wasn't working.</p>
+
+        <p>This website will be taken offline before the end of 2011</p>
+		</div>
+				<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12720395-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

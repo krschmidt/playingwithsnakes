@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>Playing with Snakes | Variables </title>
+	<link rel='stylesheet' href='style.css' type='text/css' media='screen' />
+    <!--[if IE]>
+    <style type='text/css'>
+    #content {
+         padding-top:3em;
+    }
+    </style>
+    <![endif]-->
+</head>
+<body>
+	<div id='topbar'>
+		<div class='yellowButton'><a href='../playingwithsnakes.html'>Playing with Snakes</a></div>
+		<div class='yellowButton' id='menu'><p style='margin-top:0px;margin-bottom:0px'>Variables </p><ol start='0'><li><a href='0.html' class='droplink'>Introduction </a></li><li><a href='1.html' class='droplink'>Basics </a></li><li><span style='font-weight:bold'><a class='droplink' href='2.html'>Variables </a></span></li><li><a href='3.html' class='droplink'>Basic Operations </a></li><li><a href='4.html' class='droplink'>Conditionals </a></li><li><a href='5.html' class='droplink'>Loops </a></li><li><a href='6.html' class='droplink'>Random Numbers </a></li><li><a href='7.html' class='droplink'>Handling Errors </a></li><li><a href='8.html' class='droplink'>Storing Lots of Data: Dictionaries </a></li><li><a href='9.html' class='droplink'>Storing Lots of Data: Lists </a></li><li><a href='10.html' class='droplink'>Being Lazy with Functions </a></li><li><a href='11.html' class='droplink'>Recursion: Calling yourself </a></li><li><a href='12.html' class='droplink'>Files: Long Term Storage </a></li></ol></div><div class='yellowButtonRight'><a href='3.html'>&gt;</a></div><div class='yellowButtonRight'><a href='2.html#top'>&and;</a></div><div class='yellowButtonRight'><a href='1.html'>&lt;</a></div></div>
+
+	<div id='content'>
+	<a name='top'></a><h1>Chapter 2: Variables </h1><blockquote>I Hate Programming.
+<br>
+I Hate Programming.
+<br>
+I Hate Programming.
+<br>
+It works!
+<br>
+I Love Programming.
+<br>
+-Anon
+<br>
+</blockquote><div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>Yes, I absolutely stole this entire variable example from the <a href="http://mislav.uniqpath.com/poignant-guide/">Poignant Guide to Ruby</a>. His license says it's ok though.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><p>Variables are like nicknames. Remember when everyone used to call you Stinky Pete? People would say, “Get over here, Stinky Pete!” And everyone miraculously knew that Stinky Pete was you. With variables, you give a nickname to something you use frequently.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">stinky_pete = <span style="color: #483d8b;">'Mr Schmidt'</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">'Get over here,'</span> stinky_pete</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>In the above example, <span class="codelike">stinky_pete</span> is a variable that stores my name. Whenever we want to print out my name, we can just print out <span class="codelike">stinky_pete</span>.</p>
+<p>You can store just about anything at all that you want in a variable. For example, we could create a variable called <span class="codelike">best_food</span> and set it equal to the string <span class="codelike">"Spam"</span>. We could make another one, called <span class="codelike">cans_of_spam</span>, and set that equal to the integer <span class="codelike">42</span>. We can make as many variables as we want. For some reason, some people seem scared to make another variable, almost like they're afraid they'll run out. I promise you that Python can make trillions of variables before it runs out. So don't be afraid to use another one.</p>
+<div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>Most programming language textbooks use the variable <span class="codelike">foo</span> for all of their examples. Python is named after Monty Python, so most examples use Monty Python references.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><p>So how do you pick a name for a variable? There's a few simple rules that you simply can't break.</p>
+<img src='book/ills/variables/variablecommandments.png' title="I didn't receive very high marks in my art classes" alt='picture'>
+<p>There's also some things that you shouldn't do, since they're impolite. Generally, you should avoid using variable names that don't describe what they contain, such as <span class="codelike">var1</span>, <span class="codelike">var2</span>, <span class="codelike">var3</span>. You also shouldn't use excessively long variable names, like <span class="codelike">name_of_that_guy_i_met_that_one_time_back_in_the_day_at_the_place</span>; these are just a pain to type. Instead, use names like <span class="codelike">base</span>, <span class="codelike">height</span>, and <span class="codelike">tri_area</span>. You want your variable names to describe what they're going to hold.</p>
+<p>You also probably want to avoid variable names that Python already uses for something else. For example, if you were to have a variable called <span class="codelike">min</span>, how would you know if you were trying to reference the variable <span class="codelike">min</span> or the <span class="codelike">min()</span> function, which finds the smallest number in a list? Unless you're programming in a really bad text editor, such as Notepad in Microsoft Windows, Python code probably turns pretty colors when you write it (provided you've saved it with the correct extension). When you type in words that are important to Python, such as <span class="codelike">reduce</span>, <span class="codelike">map</span>, and <span class="codelike">max</span>, they probably turn colors. Don't use those.</p>
+<p>And just to add more rules, there's some other words you're not allowed to use because they're super important to Python.</p>
+<table><tr><th>
+</th></tr>
+<tr><td>and</td><td>del</td><td>from</td><td>not</td><td>while
+</td></tr>
+<tr><td>as</td><td>elif</td><td>global</td><td>or</td><td>with
+</td></tr>
+<tr><td>assert</td><td>else</td><td>if</td><td>pass</td><td>yield
+</td></tr>
+<tr><td>break</td><td>except</td><td>import</td><td>print
+</td></tr>
+<tr><td>class</td><td>exec</td><td>in</td><td>raise
+</td></tr>
+<tr><td>continue</td><td>finally</td><td>is</td><td>return
+</td></tr>
+<tr><td>def</td><td>for</td><td>lambda</td><td>try
+</td></tr>
+</table><p>On the other hand, those are the only really important words to Python. If you know those words, you can create any program in the whole wide world.</p>
+<p>There's also some discussion about how you name your variables. Let's say we want to store our favorite type of puppy. Some people would tell you to name your variable <span class="codelike">favoritePuppy</span>. Others would tell you to store it in <span class="codelike">favorite_puppy</span>. Others would say to use <span class="codelike">FavoritePuppy</span> (This is sometimes called CamelCase, due to how it looks). Everyone would agree that you shouldn't store it in <span class="codelike">favoritepuppy</span>. Python actually has a big long <a href="http://www.python.org/dev/peps/pep-0008/">discussion</a> about this, which you should read some time when you want to go to sleep. In essence, they say that you should name your variables in all lower case, using the underscore to separate words.</p>
+<p>However, they also say that the most important thing is that you remain consistent. Having half your variables use underscores and half use capitalization makes it very hard to work on your program when you start forgetting how you did things. I'll try my best to follow Python's guidelines.</p>
+<h2>Different Types of Data
+</h2>
+<p>Python comes with a number of different types of data for you to use. Everything you store in a variable must fit one of these types. Don't worry, there's probably a type for what you want to store. In fact, I'm only going to list 4 types, since they cover almost every situation.</p>
+<p><span class="bold">Integers</span> store numbers without decimal points. They're sometimes called Whole Numbers, but you can just think of them as the regular old counting numbers, like 0, 1, 2, and 3. In many programming languages, you need to worry about how big an Integer can be. In Python, you don't need to care.</p>
+<p><span class="bold">Floats</span> store exponents and decimals. These actually go together, as much as that's hard to believe. Use these to store numbers like 3.14, 1.732, and 42.0. Exponents are stored using e notation. That is, 2x10<sup>50</sup> would be stored as 2e50. You can do negative exponents by adding a sign: 2e-50. Whatever you do, don't try to store exponents using the caret. 4^2 might seem like it should be 16, but in Python the ^ symbol actually does a bitwise XOR - the answer becomes 6. If that flew over your head, don't worry about it. Just don't try to use the caret (^) to do exponents.</p>
+<p><span class="bold">Booleans</span> store either the value <span class="codelike">True</span> or the value <span class="codelike">False</span>. Usually you use them to keep track of if something is <span class="codelike">True</span> that might some day be <span class="codelike">False</span>.</p>
+<p><span class="bold">Strings</span> store letters and sentences. You need to put them either in single or double quotes. Officially, that's all you need to know. In fact, if you want, just skip on down to below the next illustration. But if you want to know more, keep reading to see the inner workings of Strings.</p>
+<p>In a really awesome(ly hard to use) programming language called C Strings are stored as collections of characters. Each letter has a little chunk of the computers memory and then the computer remembers which chunks go together. It's a little bit like this bracelet I made for <a href="http://www.python.org/~guido/">Guido van Rossum</a>. Each block is a letter, and they're all held together with a bright pink piece of yarn.</p>
+<img src='book/ills/variables/heartguido.png' title="He never sent a thank you card." alt='picture'>
+<p>As I stated before, there's a bunch of other types of data. If you're an overachiever, you can read ahead at <a href="http://docs.python.org/library/stdtypes.html">the Python Website</a>.</p>
+<h2>Assignment
+</h2>
+<p>No, I don't mean an assignment that I'm giving you, though perhaps that'd be a good idea. Assignment is the idea of storing something in a variable. Here's an example program.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">our_variable = <span style="color: #483d8b;">&quot;Some text&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">our_number = <span style="color: #ff4500;">42</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>This program stores the string <span class="codelike">"Some Text"</span> in the variable <span class="codelike">our_variable</span>, and then stores the number <span class="codelike">42</span> in the variable <span class="codelike">our_number</span>. That's it. It won't even print anything to screen. It'll just store those variables in memory and then quit.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">a=<span style="color: #ff4500;">8</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">b=<span style="color: #ff4500;">5</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">c=a</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">b=c</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">a=b</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>This is a litle bit more confusing. What's key here is to remember that a program is nothing more than instructions. The computer will do each line, in order. On line 3, c will have the value 8. On line 4, b will get c's value, which is 8. On line 5, a will get b's value. All three variables will have the value 8.</p>
+<h2>Mixing Variables and Strings
+</h2>
+<p>There's a number of ways you can get print to both output Strings and variables. The easiest is to use the comma.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">fav_animal = <span style="color: #483d8b;">&quot;Puppies&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;I love&quot;</span>, fav_animal</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>That'll print out</p>
+<pre>I love Puppies
+</pre><p>Which I do. The comma actually does two things. Normally the <span class="codelike">print</span> statement adds a newline after printing something. That's why this:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">fav_animal = <span style="color: #483d8b;">&quot;Puppies&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">&quot;I love&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">print</span> fav_animal</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Will print out:</p>
+<pre>I love
+Puppies
+</pre><p>The comma switches that newline to a space. It also takes care of switching data between types, so that we don't need to worry about print trying to combine Strings and Integers or Floats.</p>
+
+        <p>This website will be taken offline before the end of 2011</p>
+		</div>
+				<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12720395-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

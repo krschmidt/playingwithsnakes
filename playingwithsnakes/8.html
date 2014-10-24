@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>Playing with Snakes | Storing Lots of Data: Dictionaries </title>
+	<link rel='stylesheet' href='style.css' type='text/css' media='screen' />
+    <!--[if IE]>
+    <style type='text/css'>
+    #content {
+         padding-top:3em;
+    }
+    </style>
+    <![endif]-->
+</head>
+<body>
+	<div id='topbar'>
+		<div class='yellowButton'><a href='../playingwithsnakes.html'>Playing with Snakes</a></div>
+		<div class='yellowButton' id='menu'><p style='margin-top:0px;margin-bottom:0px'>Storing Lots of Data: Dictionaries </p><ol start='0'><li><a href='0.html' class='droplink'>Introduction </a></li><li><a href='1.html' class='droplink'>Basics </a></li><li><a href='2.html' class='droplink'>Variables </a></li><li><a href='3.html' class='droplink'>Basic Operations </a></li><li><a href='4.html' class='droplink'>Conditionals </a></li><li><a href='5.html' class='droplink'>Loops </a></li><li><a href='6.html' class='droplink'>Random Numbers </a></li><li><a href='7.html' class='droplink'>Handling Errors </a></li><li><span style='font-weight:bold'><a class='droplink' href='8.html'>Storing Lots of Data: Dictionaries </a></span></li><li><a href='9.html' class='droplink'>Storing Lots of Data: Lists </a></li><li><a href='10.html' class='droplink'>Being Lazy with Functions </a></li><li><a href='11.html' class='droplink'>Recursion: Calling yourself </a></li><li><a href='12.html' class='droplink'>Files: Long Term Storage </a></li></ol></div><div class='yellowButtonRight'><a href='9.html'>&gt;</a></div><div class='yellowButtonRight'><a href='8.html#top'>&and;</a></div><div class='yellowButtonRight'><a href='7.html'>&lt;</a></div></div>
+
+	<div id='content'>
+	<a name='top'></a><h1>Chapter 8: Storing Lots of Data: Dictionaries </h1><blockquote>If debugging is the process of removing software bugs, then programming must be the process of putting them in.
+<br>
+-Edsger Dijkstra
+<br>
+</blockquote><p>So let's say we want to program a zombie simulator. You know, for the eventual uprising.</p>
+<p>So let's make a zombie. We'll call him Braaain (it's all he can say). In order to have Braaain be in our game, we need to keep track of a few things about him, such as his speed, his ability to swim, his height, how well he can dance the song Thriller. Think about how you'd store that:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">speed = <span style="color: #ff4500;">5</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">swim = false</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">height = <span style="color: #ff4500;">70</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">dance = <span style="color: #483d8b;">&quot;Not Bad&quot;</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><img src='book/ills/dictionaries/zombie1.png' title=" These comics were going to be on the sidebar, but CSS makes me want to scream." alt='picture'>
+<p>But let's say we want to make another zombie. We'll call him Grawg. Now we need two sets of variables:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain_speed = 5</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain_swim = <span style="color: #008000;">False</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain_height = <span style="color: #ff4500;">70</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain_dance = <span style="color: #483d8b;">&quot;Not Bad&quot;</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">grawg_speed = 3</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">grawg_swim = <span style="color: #008000;">True</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">grawg_height = <span style="color: #ff4500;">70</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">grawg_dance = <span style="color: #483d8b;">&quot;Excellent&quot;</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>How inefficient! And we know what happens with zombies. First one comes over for dinner and he invites a friend. Next thing you know, there's hundreds of them. There's got to be a better way. Enter dictionaries.</p>
+<p>A normal dictionary consists of words and definitions. Back in the olden days, people would leaf through a big huge book and find the word we're looking for. Right next to it would be a definition.</p>
+<img src='book/ills/dictionaries/zombie2.png' title=" In the event of an actual Zombie Attack, be sure to get to a safe place as quickly as possible." alt='picture'>
+<p>A Python dictionary works much the same way. We enter words, called keys, and their definitions, which we call values. Let's start by creating an empty one.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain = <span style="color: black;">&#123;</span><span style="color: black;">&#125;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Tada! We have a dictionary. Note the use of the curly brackets (some people call them a leftstache and a rightstache (due to the resemblance to a handlebar mustache, when you turn them sideways).</p>
+<p>Now let's add some stuff to them.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain = <span style="color: black;">&#123;</span><span style="color: black;">&#125;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain<span style="color: black;">&#91;</span><span style="color: #483d8b;">'speed'</span><span style="color: black;">&#93;</span> = <span style="color: #ff4500;">5</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain<span style="color: black;">&#91;</span><span style="color: #483d8b;">'swim'</span><span style="color: black;">&#93;</span> = false</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain<span style="color: black;">&#91;</span><span style="color: #483d8b;">'height'</span><span style="color: black;">&#93;</span> = <span style="color: #ff4500;">70</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">braaain<span style="color: black;">&#91;</span><span style="color: #483d8b;">'dance'</span><span style="color: black;">&#93;</span> = <span style="color: #483d8b;">&quot;Not bad&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Now we've got our good friend braaain all in once place. If we want to, instead of creating someone one line at a time, we can create someone all at once.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">grawg = <span style="color: black;">&#123;</span><span style="color: #483d8b;">'speed'</span>:<span style="color: #ff4500;">3</span>, <span style="color: #483d8b;">'swim'</span>:<span style="color: #008000;">True</span>,<span style="color: #483d8b;">'height'</span>:<span style="color: #ff4500;">70</span>,<span style="color: #483d8b;">'dance'</span>=<span style="color: #483d8b;">&quot;Excellent&quot;</span> <span style="color: black;">&#125;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>If Zombies aren't your thing, we could make a phonebook instead.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">phonebook = <span style="color: black;">&#123;</span><span style="color: black;">&#125;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">phonebook<span style="color: black;">&#91;</span><span style="color: #483d8b;">'Jenny'</span><span style="color: black;">&#93;</span> = <span style="color: #483d8b;">&quot;867-5309&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">phonebook<span style="color: black;">&#91;</span><span style="color: #483d8b;">'SirMixALot'</span><span style="color: black;">&#93;</span> = <span style="color: #483d8b;">&quot;1-800-mix-a-lot&quot;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Remember that dictionaries are of a set size. That means we can loop through them with a for loop.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> name,number <span style="color: #ff7700;font-weight:bold;">in</span> phonebook.<span style="color: black;">iteritems</span><span style="color: black;">&#40;</span><span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> name, <span style="color: #483d8b;">'<span style="color: #000099; font-weight: bold;">\t</span>'</span>, number</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>This would print out:</p>
+<pre>Jenny         867-5309
+SirMixALot    1-800-max-a-lot
+</pre><p>Notice the way we're using <span class="codelike">iteritems()</span>. A dictionary consists of key:value pairs, so trying to loop through one directly won't necessarily work.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> phonebook:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">print</span> i</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><pre>Jenny
+SirMixALot
+</pre><p>No phone numbers. But use <span class="codelike">iteritems()</span> and <span class="codelike">iteritems()</span> will take care of assigning the key to the first variable and the value to the second. We just used the variables <span class="codelike">name</span> and <span class="codelike">number</span> because they made sense. We could have just as easily used <span class="codelike">k</span> and <span class="codelike">v</span> for key and value. Remember though, you can just loop through a dictionary like normal if all you need is the key.</p>
+<img src='book/ills/dictionaries/zombie3.png' title=" At least the chainsaw wasn't attached to my arm." alt='picture'>
+<p>Back to the zombies.</p>
+<p>It's probably a bit of a pain to create a dictionary for each zombie. In fact, it'd probably be far more efficient to make a dictionary to hold our zombie dictionaries.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">zombies = <span style="color: black;">&#123;</span><span style="color: #483d8b;">'braaain'</span>:<span style="color: black;">&#123;</span><span style="color: #483d8b;">'speed'</span>:<span style="color: #ff4500;">5</span>,<span style="color: #483d8b;">'swim'</span>:<span style="color: #008000;">False</span>,<span style="color: #483d8b;">'height'</span>:<span style="color: #ff4500;">70</span>,<span style="color: #483d8b;">'dance'</span>:<span style="color: #483d8b;">&quot;not bad&quot;</span><span style="color: black;">&#125;</span>,<span style="color: #483d8b;">'grawg'</span>:<span style="color: black;">&#123;</span><span style="color: #483d8b;">'speed'</span>:<span style="color: #ff4500;">3</span>,<span style="color: #483d8b;">'swim'</span>:<span style="color: #008000;">True</span>,<span style="color: #483d8b;">'height'</span>:<span style="color: #ff4500;">70</span>,<span style="color: #483d8b;">'dance'</span>:<span style="color: #483d8b;">&quot;Excellent&quot;</span><span style="color: black;">&#125;</span><span style="color: black;">&#125;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>We can use our brand new dictionary of zombie dictionaries to perform operations on everyone. Here's a loop that will go through each of our zombies and increase speed by 1.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">for</span> z <span style="color: #ff7700;font-weight:bold;">in</span> zombies:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; zombies<span style="color: black;">&#91;</span>z<span style="color: black;">&#93;</span><span style="color: black;">&#91;</span><span style="color: #483d8b;">'speed'</span><span style="color: black;">&#93;</span>+=<span style="color: #ff4500;">1</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Check out the use of both sets of brackets. The first set references a specific zombie: <span class="codelike">z</span> will take on the values <span class="codelike">braaain</span> and <span class="codelike">grawg</span>. Out of each of those dictionaries we'll look at what's stored in the value <span class="codelike">speed</span> and increase it by 1.</p>
+<p>Perfect! Now the zombies can eat all of us!</p>
+<p>Must... have... braaaaaaaaaain.......</p>
+<img src='book/ills/dictionaries/zombie4.png' title=" You could rate my dancing skills as 'bad'" alt='picture'>
+
+        <p>This website will be taken offline before the end of 2011</p>
+		</div>
+				<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12720395-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

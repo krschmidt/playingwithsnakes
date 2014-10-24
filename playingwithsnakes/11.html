@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+	<title>Playing with Snakes | Recursion: Calling yourself </title>
+	<link rel='stylesheet' href='style.css' type='text/css' media='screen' />
+    <!--[if IE]>
+    <style type='text/css'>
+    #content {
+         padding-top:3em;
+    }
+    </style>
+    <![endif]-->
+</head>
+<body>
+	<div id='topbar'>
+		<div class='yellowButton'><a href='../playingwithsnakes.html'>Playing with Snakes</a></div>
+		<div class='yellowButton' id='menu'><p style='margin-top:0px;margin-bottom:0px'>Recursion: Calling yourself </p><ol start='0'><li><a href='0.html' class='droplink'>Introduction </a></li><li><a href='1.html' class='droplink'>Basics </a></li><li><a href='2.html' class='droplink'>Variables </a></li><li><a href='3.html' class='droplink'>Basic Operations </a></li><li><a href='4.html' class='droplink'>Conditionals </a></li><li><a href='5.html' class='droplink'>Loops </a></li><li><a href='6.html' class='droplink'>Random Numbers </a></li><li><a href='7.html' class='droplink'>Handling Errors </a></li><li><a href='8.html' class='droplink'>Storing Lots of Data: Dictionaries </a></li><li><a href='9.html' class='droplink'>Storing Lots of Data: Lists </a></li><li><a href='10.html' class='droplink'>Being Lazy with Functions </a></li><li><span style='font-weight:bold'><a class='droplink' href='11.html'>Recursion: Calling yourself </a></span></li><li><a href='12.html' class='droplink'>Files: Long Term Storage </a></li></ol></div><div class='yellowButtonRight'><a href='12.html'>&gt;</a></div><div class='yellowButtonRight'><a href='11.html#top'>&and;</a></div><div class='yellowButtonRight'><a href='10.html'>&lt;</a></div></div>
+
+	<div id='content'>
+	<a name='top'></a><h1>Chapter 11: Recursion: Calling yourself </h1><blockquote>To understand recursion, you must first understand recursion. -Anon
+<br>
+</blockquote><blockquote>If you already know what recursion is, just remember the answer. Otherwise, find someone who is standing closer to Douglas Hofstadter than you are; then ask him or her what recursion is. - Andrew Plotkin.
+<br>
+</blockquote><p>Recursion is one of the traditional scary topics of computer science. Scary like stumbling across a velociraptor on Valentine's Day, after he was just dumped by his velociraptor girlfriend? No, not really. Scary like seeing me in the morning before I've had a cup of coffee? Close.</p>
+<p>So let's explore recursion without any computers first.</p>
+<img src='book/ills/recursion/zombiegothic.png' title=" You can't fool me, It's Zombies all the way down!" alt='picture'>
+<p>Our heroes are in the foreground, but there's a picture of them in the background, which features another picture of them in the background, which features another picture of them in the... Well, you get the idea.</p>
+<p>Here's another one. There's a pretty neat organization out there called <a href="http://www.gnu.org">GNU</a> that had a name which is a recursive acronym. The acronym is part of the definition of the acronym. GNU stands for GNU's Not Unix. Of course, the GNU in the definition stands for GNU's Not Unix, and that GNU stands for GNU's Not Unix, and so on.</p>
+<p>PHP does something similar. PHP stands for PHP Hypertext Processor, and the PHP in the definition stands for PHP Hypertext Processor, and so on once again.</p>
+<h2>Finding a Sum
+</h2>
+<p>This may be one time (these times will become more frequent), when it makes more sense to just look at a program. Let's write a simple one that we've done a whole bunch of time. Let's find the sum of a list. Here's our old program.</p>
+<div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>If you're really awesome at Python, you could also find the sum this way:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #008000;">reduce</span><span style="color: black;">&#40;</span><span style="color: #ff7700;font-weight:bold;">lambda</span> x,y:x+y,ourList<span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p><span class="codelike">reduce</span> recursively does a function (in this case the function is anonymous, meaning it has no name) on a list. It's neat, but any real Python person would just tell you to use Python's built in <span class="codelike">sum</span> function.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">def</span> <span style="color: #008000;">sum</span><span style="color: black;">&#40;</span>ourList<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; total = 0</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> ourList:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; total+=i</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">return</span> total</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>We can rewrite that program recursively. Rather than talk you through it, try reading it first:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">def</span> recursiveSum<span style="color: black;">&#40;</span>ourList<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #008000;">len</span><span style="color: black;">&#40;</span>ourList<span style="color: black;">&#41;</span> == 1:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span> ourList<span style="color: black;">&#91;</span>0<span style="color: black;">&#93;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">else</span>:</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span> ourList<span style="color: black;">&#91;</span><span style="color: #ff4500;">0</span><span style="color: black;">&#93;</span> + recursiveSum<span style="color: black;">&#40;</span>ourList<span style="color: black;">&#91;</span><span style="color: #ff4500;">1</span>:<span style="color: black;">&#93;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Here's how I read it. If our list has only one number in it, then the sum is that number. Otherwise, take the first number and add it to the sum of the rest of the numbers.</p>
+<p>But what happens with the sum of the rest of the numbers? Well, Python will take <span class="codelike">ourList[1:]</span> and give it to <span class="codelike">recursiveSum</span>. Good old <span class="codelike">recursiveSum</span> will take the first number of the new list (the second number of the original list) and add it to the sum of the rest of the list, and then return that sum to the original function.</p>
+<p>So, to play that all out. Let's run through a sample. If our list was <span class="codelike">[7,5,3]</span> and we wanted to find the sum, we'd do this:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">recursiveSum<span style="color: black;">&#40;</span><span style="color: black;">&#91;</span><span style="color: #ff4500;">7</span>,<span style="color: #ff4500;">5</span>,<span style="color: #ff4500;">3</span><span style="color: black;">&#93;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Since the list has more than one number in it, we skip the if statement and do the else. So this function is going to return <span class="codelike">ourList[0] + recurisveSum(ourList[1:])</span>. So for this program, that looks like this:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #ff4500;">7</span> + recursiveSum<span style="color: black;">&#40;</span><span style="color: black;">&#91;</span><span style="color: #ff4500;">5</span>,<span style="color: #ff4500;">3</span><span style="color: black;">&#93;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>But Python first needs to determine a value for <span class="codelike">recursiveSum([5,3])</span>. So it calls the function again, this time leaving out the first number of the list. That second function call is going to look like this:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #ff4500;">5</span> + recursiveSum<span style="color: black;">&#40;</span><span style="color: black;">&#91;</span><span style="color: #ff4500;">3</span><span style="color: black;">&#93;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>The final function call is the easiest. <span class="codelike">recursiveSum([3])</span> will simply return <span class="codelike">3</span>, as the sum of 3 is 3. So let's substitute each of these values in. I'm putting some extra parenthesis in to make it easier to see what values come from which function calls.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #ff4500;">7</span> + <span style="color: black;">&#40;</span><span style="color: #ff4500;">5</span> + <span style="color: black;">&#40;</span><span style="color: #ff4500;">3</span><span style="color: black;">&#41;</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><h2>Calculating Fibonacci Numbers
+</h2>
+<p>Fibonacci Numbers are one of the classic introductory exercises when learning recursion. To make Fibonacci numbers, you start with 0 and 1 and add them together. Then take the sum and add it to the second of the original numbers. Then take the new sum and add it to our first sum, and so on. So you get a sequence like this:</p>
+<pre>0,1,1,2,3,5,8,13,21
+</pre><p>You should probably give this a try first, then take a look at my answer.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">def</span> fib<span style="color: black;">&#40;</span>number<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">if</span> number == 0:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span> 0</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">elif</span> number == 1:</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span> 1</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">else</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span> fib<span style="color: black;">&#40;</span>number-<span style="color: #ff4500;">1</span><span style="color: black;">&#41;</span> + fib<span style="color: black;">&#40;</span>number-<span style="color: #ff4500;">2</span><span style="color: black;">&#41;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><div class="sidebar">
+							<div class="sidebartitle">&lt;sidebar&gt;</div>
+							<hr><p>Python actually has a maximum recursive depth, to avoid letting recursion run out of control. If for some reason you need more depth (this is rare), you can change the limit with <span class="codelike"><a href="http://docs.python.org/library/sys#sys.setrecursionlimit">sys.setrecursionlimit</a></span>.</p>
+<hr>
+							<div class="sidebartitle">&lt;/sidebar&gt;</div>
+						</div><p>So here, we clearly see if statements for our base cases - 0 and 1. We also see the rest of the definition - a Fibonacci number is the two previous Fibonacci numbers added together. Identifying your base cases is a very important first step in recursion. If you don't do it properly, or at all, then your recursive function will run forever.</p>
+<h2>A more graphical example
+</h2>
+<p>Most of the examples we've looked at so far are either trivially easy, or woefully inefficient. But recursion is used in the real world all the time. One really common recursive algorithm is called flood-fill. You can think of it as a paint bucket.</p>
+<p>There's an image format called <i>bitmap</i> that defines an image as a map of bits (obviously). This means that there's a grid of things called <i>pixels</i>, which each have one color. Here's an example.</p>
+<img src='book/ills/recursion/plainhouse.png' title=" At least this one isn't in the middle of the street. That always seemed like an awful place for a house." alt='picture'>
+<p>It's a pretty house, but I've always wanted a nicer roof. Maybe a bright red one, to alert other survivors of the zombie apocalypse that I'm still alive. Let's write a function to recolor our roof.</p>
+<p>This first thing we need to do is pick a coordinate system for our bitmap. With almost all graphics, the top left corner of the image is 0,0. We'll follow the same convention.</p>
+<img src='book/ills/recursion/plainhousegrid.png' title=" I'd also like a window that isn't colored brown, but you can't always get what you want." alt='picture'>
+<p>So our plan is going to be to click on a part of our house's roof and change the color to red. So, another way to look at that would be to say we're going to change the <span class="codelike">clickedColor</span> to the <span class="codelike">targetColor</span>. We'll also know two more things - the <span class="codelike">X</span> and the <span class="codelike">Y</span> that we're looking at.</p>
+<p>So now we've defined our basic vocabulary, so we can look at our base situations. Two of those situations deal with the color we're looking at. If the color at X,Y is not the <span class="codelike">clickedColor</span>, then we should stop changing colors. Similarly, if the color at X,Y is already the <span class="codelike">targetColor</span>, then we should stop changing colors. The last base case is when we're off the edge of the image - when X or Y is less than 0 or greater than the width or height of the image.</p>
+<p>So, let's look at our code so far:</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">def</span> floodfill<span style="color: black;">&#40;</span>X, Y, targetColor, clickedColor<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">if</span> X <span style="color: #ff7700;font-weight:bold;">or</span> Y <span style="color: #ff7700;font-weight:bold;">is</span> off the edge of the image:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">elif</span> X,Y <span style="color: #ff7700;font-weight:bold;">is</span> targetColor:</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">elif</span> X,Y <span style="color: #ff7700;font-weight:bold;">is</span> <span style="color: #ff7700;font-weight:bold;">not</span> clickedColor:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>Beyond our three base conditions, there's one other option - we need to be changing the color. In that case, we'll set the current X,Y to our <span class="codelike">targetColor</span> and then call <span class="codelike">floodfill</span> on each adjacent square.</p>
+<div class="python" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #ff7700;font-weight:bold;">def</span> floodfill<span style="color: black;">&#40;</span>X, Y, targetColor, clickedColor<span style="color: black;">&#41;</span>:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">if</span> X <span style="color: #ff7700;font-weight:bold;">or</span> Y <span style="color: #ff7700;font-weight:bold;">is</span> off the edge of the image:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">elif</span> X,Y <span style="color: #ff7700;font-weight:bold;">is</span> targetColor:</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">elif</span> X,Y <span style="color: #ff7700;font-weight:bold;">is</span> <span style="color: #ff7700;font-weight:bold;">not</span> clickedColor:</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #ff7700;font-weight:bold;">return</span> &nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; X,Y = targetColor <span style="color: #808080; font-style: italic;">#setting X,Y to our targetColor</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; floodfill<span style="color: black;">&#40;</span>x-<span style="color: #ff4500;">1</span>,y,targetColor,clickedColor<span style="color: black;">&#41;</span> <span style="color: #808080; font-style: italic;">#to the left</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; floodfill<span style="color: black;">&#40;</span>x+<span style="color: #ff4500;">1</span>,y,targetColor,clickedColor<span style="color: black;">&#41;</span> <span style="color: #808080; font-style: italic;">#to the right</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; floodfill<span style="color: black;">&#40;</span>x,y-<span style="color: #ff4500;">1</span>,targetColor,clickedColor<span style="color: black;">&#41;</span> <span style="color: #808080; font-style: italic;">#up</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; floodfill<span style="color: black;">&#40;</span>x,y+<span style="color: #ff4500;">1</span>,targetColor,clickedColor<span style="color: black;">&#41;</span> <span style="color: #808080; font-style: italic;">#down</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; <span style="color: #ff7700;font-weight:bold;">return</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div><p>While that isn't exactly functional Python, it's a good description of our entire algorithm. Some would call it pseudocode. Let's walk through what happens when we click. I'll click on cell 5,2. This is function call number 1.</p>
+<p>First we check our if statements - none of them are true. So we immediately set 5,2 to our target color. That gives us this:</p>
+<img src='book/ills/recursion/plainhousegrid1.png' title=" This might be a bit too red." alt='picture'>
+<p>Next line down of our algorithm says to call floodfill on the left. So we start a new function. This is functional call number 2. It sees the if statements are false, so it recolors cell 4,2.</p>
+<img src='book/ills/recursion/plainhousegrid2.png' title=" No, the red is growing on me." alt='picture'>
+<p>Once again, we continue calling floodfill on the left. This is a 3rd function call, which we call on 3,2.</p>
+<img src='book/ills/recursion/plainhousegrid3.png' title=" Oh no, we can't go left any more!" alt='picture'>
+<p>So here's where things get weird. We've just finished recoloring, so we once again call floodfill to the left. This is our 4th function call, on 2,2. But this time we hit an if statement. The color at 2,2 is not equal to our <span class="codelike">clickedColor</span>, so our function returns. We go back to our 3rd function call. The next line down, we call to the right. This would be function call number 5, back on 4,2.</p>
+<p>Ah! But the color of cell 4,2 is already <span class="codelike">targetColor</span>. So we go back to the 3rd function call. Now we look up for function call 6 (not <span class="codelike">clickedColor</span>) and then down for number 7 (also not <span class="codelike">clickedColor</span>). So our 3rd function call is finally able to return. That takes us back to our 2nd function call, which is now able to look right for call number 8 (already <span class="codelike">targetColor</span>). But then it makes a new function call 9 on the cell above - cell 4,1. It colors that one red. Then we continue with call 9, looking left, then right, then right again, etc.</p>
+<img src='book/ills/recursion/plainhousegrid4.png' title=" Maybe I should have picked mauve." alt='picture'>
+<p>This process seems terribly slow, but actually happens pretty quick. It also carries the advantage of being able to color any shape.</p>
+<img src='book/ills/recursion/plainhousegrid5.png' title=" She actually said rose." alt='picture'>
+
+        <p>This website will be taken offline before the end of 2011</p>
+		</div>
+				<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12720395-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
